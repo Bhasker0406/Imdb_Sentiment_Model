@@ -20,7 +20,7 @@ def preprocess_text(text):
 
 def predict_sentiment(review):
     preprocessed_input = preprocess_text(review)
-
+    preprocessed_input[preprocessed_input >= 1000] = 0
     prediction=model.predict(preprocessed_input)
     sentiment = 'Postive' if prediction[0][0] > 0.5 else 'Negative'
     return sentiment, prediction[0][0]
